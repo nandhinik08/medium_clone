@@ -21,12 +21,39 @@ const styles = {
   recommendationAuthorProfileImageContainer: `rounded-full overflow-hidden h-[1.4rem] w-[1.4rem]`,
   recommendationAuthorName: `text-sm`,
   recommendationAuthorContainer: `flex items-center gap-[.6rem]`,
-  recommendationTitile: `font-bold`,
+  recommendationTitle: `font-bold`,
   recommendationThumbnailContainer: `flex flex-1 items-center justify-center h-[4rem] w-[4rem]`,
   recommendationThumbnail: `object-cover`,
-  articleContentWrapper: `flex tems-center justify-between cursor-pointer my-[1rem]`,
+  articleContentWrapper: `flex items-center justify-between cursor-pointer my-[1rem]`,
   articleContent: `flex-[4]`,
 };
+
+const recommendedPost = [
+  {
+    title: "what can you do with Replit?",
+    image: ReplitLogo,
+    author: {
+      name: "Clever Programmer",
+      image: CPLogo,
+    },
+  },
+  {
+    title: "The Ultimate JavaScript Course for Beginners by Clever Programmer",
+    image: TutorialImg,
+    author: {
+      name: "Rafi Qazi",
+      image: Qazi,
+    },
+  },
+  {
+    title: "How to be dev In 2022",
+    image: JSLogo,
+    author: {
+      name: "Clever Programmer",
+      image: CPLogo,
+    },
+  },
+];
 
 const Recommendations = ({ author }) => {
   return (
@@ -56,31 +83,31 @@ const Recommendations = ({ author }) => {
       <div className={styles.recommendationContainer}>
         <div className={styles.title}>More from Medium </div>
         <div className={styles.articleContainer}>
-          <div className={styles.articleContentWrapper}>
-            <div className={styles.articleContent}>
-              <div className={styles.recommendationAuthorContainer}>
-                <div
-                  className={styles.recommendationAuthorProfileImageContainer}
-                >
-                  <Image src={Qazi} height={100} width={100} />
+          {recommendedPost.map((post) => (
+            <div key={post.title} className={styles.articleContentWrapper}>
+              <div className={styles.articleContent}>
+                <div className={styles.recommendationAuthorContainer}>
+                  <div
+                    className={styles.recommendationAuthorProfileImageContainer}
+                  >
+                    <Image src={post.author.image} height={100} width={100} />
+                  </div>
+                  <div className={styles.recommendationAuthorName}>
+                    {post.author.name}
+                  </div>
                 </div>
-                <div className={styles.recommendationAuthorName}>Nandhini</div>
+                <div className={styles.recommendationTitle}>{post.title}</div>
               </div>
-              <div className={styles.recommendationTitile}>
-                The Ultimate JavaScript Course for Beginners by Clever
-                Programmer
+              <div className={styles.recommendationThumbnailContainer}>
+                <Image
+                  className={styles.recommendationThumbnail}
+                  src={post.image}
+                  height={100}
+                  width={100}
+                />
               </div>
             </div>
-
-            <div className={styles.recommendationThumbnailContainer}>
-              <Image
-                className={styles.recommendationThumbnail}
-                src={JSLogo}
-                height={100}
-                width={100}
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
