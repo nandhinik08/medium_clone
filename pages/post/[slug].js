@@ -1,6 +1,6 @@
 import ArticleMain from "../../components/ArticleMain";
-import ReadersNav from "../../Components/ReadersNav";
-import Recommendations from "../../Components/Recommendations";
+import ReadersNav from "../../components/ReadersNav";
+import Recommendations from "../../components/Recommendations";
 
 const styles = {
   content: `flex`,
