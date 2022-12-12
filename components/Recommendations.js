@@ -69,7 +69,7 @@ const Recommendations = ({ author }) => {
       </div>
       <div className={styles.authorContainer}>
         <div className={styles.authorProfileImageContainer}>
-          <Image src={Qazi} width={100} height={100} />
+          <Image alt="profile" src={Qazi} width={100} height={100} />
         </div>
         <div className={styles.authorName}>Nandhini </div>
         <div className={styles.authorFollowing}>1M follower </div>
@@ -90,7 +90,12 @@ const Recommendations = ({ author }) => {
                   <div
                     className={styles.recommendationAuthorProfileImageContainer}
                   >
-                    <Image src={post.author.image} height={100} width={100} />
+                    <Image
+                      alt="auhtor"
+                      src={post.author.image}
+                      height={100}
+                      width={100}
+                    />
                   </div>
                   <div className={styles.recommendationAuthorName}>
                     {post.author.name}
@@ -100,6 +105,7 @@ const Recommendations = ({ author }) => {
               </div>
               <div className={styles.recommendationThumbnailContainer}>
                 <Image
+                  alt="rec"
                   className={styles.recommendationThumbnail}
                   src={post.image}
                   height={100}

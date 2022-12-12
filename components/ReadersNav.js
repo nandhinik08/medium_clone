@@ -22,7 +22,7 @@ const ReadersNav = () => {
     <div className={styles.wrapper}>
       <Link href={"/"}>
         <div className={styles.logoContainer}>
-          <Image src={SmallLogo} />
+          <Image alt="sLogo" src={SmallLogo} />
         </div>
       </Link>
       <div className={styles.iconsContainer}>
@@ -35,7 +35,7 @@ const ReadersNav = () => {
         </div>
       </div>
       <div className={styles.profileImageContainer}>
-        <Image className={styles.profileImage} src={Qazi} />
+        <Image alt="profile" className={styles.profileImage} src={Qazi} />
       </div>
     </div>
   );

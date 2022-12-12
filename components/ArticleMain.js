@@ -35,6 +35,7 @@ const ArticleMain = () => {
           <div className={styles.authorContainer}>
             <div className={styles.authorProfileImageContainer}>
               <Image
+                alt="author"
                 className={`object-Cover`}
                 src={Qazi}
                 width={100}
@@ -65,6 +66,7 @@ const ArticleMain = () => {
         <div className={styles.articleMainContainer}>
           <div className={styles.bannerContainer}>
             <Image
+              alt="Banner"
               className={styles.image}
               src={Banner}
               height={100}

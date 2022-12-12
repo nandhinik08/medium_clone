@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../static/logo.png";
 import { FiBookmark } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const styles = {
   authorContainer: `flex gap-[.4rem]`,
@@ -15,35 +18,56 @@ const styles = {
   category: `bg-[#F2F3F2] p-1 rounded-full`,
   bookmarkContainer: "cursor-pointer",
   wrapper: `flex max-w-[46rem] h-[10rem] item-center gap-[1rem] cursor-pointer`,
-  thumbnailContainer: ``,
+  thumbnailContainer: `flex-1`,
   postDetails: `flex-[2.5] flex flex-col`,
 };
 
-const PostCard = () => {
+const PostCard = ({ post }) => {
+  const [authorData, setAuthorData] = useState();
+
+  useEffect(() => {
+    const getAuthorData = async () => {
+      const datat = await (
+        await getDoc(doc(db, "users", post.data.author))
+      ).data();
+      console.log("hi", post.data, datat);
+      setAuthorData(datat);
+    };
+
+    getAuthorData();
+  }, []);
+  console.log(authorData);
   return (
-    <Link href={`/post/123`}>
+    <Link href={`/post/${post.id}`}>
       <div className={styles.wrapper}>
         <div className={styles.postDetails}>
           <div className={styles.authorContainer}>
             <div className={styles.authorImageContainer}>
               <Image
+                alt="authorImg"
                 src={Logo}
                 className={styles.authorImage}
                 width={40}
                 height={40}
               />
             </div>
-            <div className={styles.authorName}>Nandhini</div>
+            <div className={styles.authorName}>{authorData?.name}</div>
           </div>
           <h1 className={styles.title}>
-            7 Free Tools That will Make You More Productive In 2022
+            {/* 7 Free Tools That will Make You More Productive In 2022 */}
+            {post.data.title}
           </h1>
           <div className={styles.briefing}>
-            productivity is a skill that can be learned.
+            {/* productivity is a skill that can be learned. */}
+            {post.data.brief}
           </div>
           <div className={styles.detailContainer}>
             <span className={styles.articleDetails}>
-              Jun 15 . 5 min read .
+              {new Date(post.data.postedOn).toLocaleString("en-US", {
+                day: "numeric",
+                month: "short",
+              })}
+              . {post.data.postLength} min read .
               <span className={styles.category}>productivity</span>
             </span>
             <span className={styles.bookmarkContainer}>
@@ -52,7 +76,7 @@ const PostCard = () => {
           </div>
         </div>
         <div className={styles.thumbnailContainer}>
-          <Image src={Logo} height={100} width={100} />
+          <Image alt="Logo" src={Logo} height={100} width={100} />
         </div>
       </div>
     </Link>

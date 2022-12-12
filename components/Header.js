@@ -15,7 +15,13 @@ const Header = () => {
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <div className={styles.logoContainer}>
-          <Image className={styles.logo} src={Logo} height={10} width={200} />
+          <Image
+            alt="Logo"
+            className={styles.logo}
+            src={Logo}
+            height={10}
+            width={200}
+          />
         </div>
         <div className={styles.bannerNav}>
           <div>Our Story</div>

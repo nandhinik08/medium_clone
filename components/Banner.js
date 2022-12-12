@@ -21,6 +21,7 @@ const Banner = () => {
         </div>
         <div>
           <Image
+            alt="Banner"
             className="hidden h-32 md:inline-flex object-content flex-1"
             src={bannerImg}
             height={500}
