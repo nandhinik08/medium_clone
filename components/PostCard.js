@@ -30,13 +30,11 @@ const PostCard = ({ post }) => {
       const datat = await (
         await getDoc(doc(db, "users", post.data.author))
       ).data();
-      console.log("hi", post.data, datat);
       setAuthorData(datat);
     };
 
     getAuthorData();
   }, []);
-  console.log(authorData);
   return (
     <Link href={`/post/${post.id}`}>
       <div className={styles.wrapper}>

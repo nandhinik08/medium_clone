@@ -27,7 +27,8 @@ const styles = {
   subtitle: `font-mediumSerifItalic text-[1.4rem] text-[#292929]`,
   articleText: `font-mediumSerif text-[1.4rem] text-[#292929]`,
 };
-const ArticleMain = () => {
+const ArticleMain = ({ post, author }) => {
+  // console.log(post, author);
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -43,13 +44,13 @@ const ArticleMain = () => {
               />
             </div>
             <div className={styles.column}>
-              <div>Nadhini</div>
+              <div>{author?.name}</div>
               <div className={styles.postDetails}>
                 <span>June 15 . 7 min read .</span>
-                <sapn className={styles.listenButton}>
+                <span className={styles.listenButton}>
                   <AiFillAlipayCircle />
                   Listen
-                </sapn>
+                </span>
               </div>
             </div>
           </div>
@@ -74,22 +75,14 @@ const ArticleMain = () => {
             />
           </div>
           <h1 className={styles.title}>
-            7 Free Tools That Will Make You More Productive In 2022
+            {post?.data?.title}{" "}
+            {/* 7 Free Tools That Will Make You More Productive In 2022 */}
           </h1>
           <h4 className={styles.subtitle}>
-            <div>Nandhini, June 15,2022</div>
-            <div>Brief:Productivity is a skill that can be learned.</div>
+            <div>{author?.name}, June 15,2022</div>
+            <div>Brief:{post?.data?.brief}</div>
           </h4>
-          <div className={styles.articleText}>
-            As I was thinking about the advice that I want to give, I realized
-            that I don’t have much advice for college itself. My college
-            experience was different than most people’s. I took a gap year after
-            high school to do missionary work. Then I went to a traditional
-            college for one year. After trying traditional school and hating it,
-            I moved to Mexico. Then I did two more years at two different
-            universities in Mexico. Finally, while working two jobs and being a
-            brand new dad, I finished up my schooling online.
-          </div>
+          <div className={styles.articleText}>{post?.data?.body}</div>
         </div>
       </div>
     </div>
